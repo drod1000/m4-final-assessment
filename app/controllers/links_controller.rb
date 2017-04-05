@@ -12,7 +12,7 @@ class LinksController < ApplicationController
     @user = current_user
     @link = @user.links.new(link_params)
     if @link.save
-      redirect_to links_path
+      render partial: 'shared/link_markup', locals: {link: @link}
     else
       flash[:danger] = @link.errors.full_messages
       redirect_to links_path
@@ -29,7 +29,6 @@ class LinksController < ApplicationController
     @link = @user.links.find(params[:id])
     if @link.update(link_params)
       flash[:success] = "Successfully updated #{@link.title}."
-      redirect_to links_path
     else
       flash[:danger] = @link.errors.full_messages
       redirect_to links_path
