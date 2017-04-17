@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.mark-as-read').on('click', function() {
+  $('.mark-as-unread').on('click', function() {
 
     var link = $(this).parent('.link')
     var linkId = link.attr('id')
@@ -7,7 +7,7 @@ $(document).ready(function() {
     $.ajax({
       type: "PATCH",
       url: "/api/v1/links/" + linkId,
-      data: { read: true}
+      data: { read: false}
     }).done(function(response) {
       updateLinkStatus(response)
     })

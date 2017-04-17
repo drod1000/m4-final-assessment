@@ -2,6 +2,13 @@
 <%= render partial: 'shared/link_form', locals: {link: @link} %>
 
 <table>
+  <button class='show-read'>Show Read</button>
+  <button class='show-unread'>Show Unread</button>
+  <div class="link-filter">
+    <label>Filter by Title or URL
+      <input type="text" name="link-filter">
+    </label>
+  </div>
   <thead>
     <tr>
       <th>Title</th>
@@ -12,19 +19,23 @@
   </thead>
   <tbody>
     <% @user.links.each do |link| %>
-    <tr class='link' id='<%= link.id %>'>
-      <td><%= link.title %></td>
-      <td><%= link.url %></td>
-      <td class='read-status'><%= link.read %></td>
       <% if link.read %>
-        <td class='mark-as-unread'><%= link_to 'Mark as Unread', edit_link_path(link), method: 'PATCH' %>
-        </td>
+        <tr class='link already-read' id='<%= link.id %>'>
+          <td><%= link.title %></td>
+          <td><%= link.url %></td>
+          <td class='read-status'><%= link.read %></td>
+          <td class='mark-as-unread'><button>Mark as Unread</button></td>
+          <td><%= link_to 'Edit', edit_link_path(link) %></td>
+        </tr>
       <% else %>
-        <td class='mark-as-read'><button>Mark as Read</button>
-        </td>
+        <tr class='link' id='<%= link.id %>'>
+          <td><%= link.title %></td>
+          <td><%= link.url %></td>
+          <td class='read-status'><%= link.read %></td>
+          <td class='mark-as-read'><button>Mark as Read</button></td>
+          <td><%= link_to 'Edit', edit_link_path(link) %></td>
+        </tr>
       <% end %>
-      <td><%= link_to 'Edit', edit_link_path(link) %></td>
-    </tr>
     <% end %>
   </tbody>
 </table>
