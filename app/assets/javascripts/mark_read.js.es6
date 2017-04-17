@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     $.ajax({
       type: "POST",
-      url: "https://dr-hot-reads.herokuapp.com//api/v1/links",
+      url: "https://dr-hot-reads.herokuapp.com/api/v1/links",
       data: { url: linkUrl }
     })
   })
