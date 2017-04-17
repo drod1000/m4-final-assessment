@@ -1,13 +1,7 @@
-<tr class='link' id='<%= @link.id %>'>
-  <td><%= @link.title %></td>
-  <td><%= @link.url %></td>
+<tr class='link' id='<%= link.id %>'>
+  <td><%= link.title %></td>
+  <td><%= link.url %></td>
   <td class='read-status'><%= link.read %></td>
-  <% if @link.read %>
-    <td class='mark-as-unread'><button>Mark as Unread</button>
-    </td>
-  <% else %>
-    <td class='mark-as-read'><button>Mark as Read</button>
-    </td>
-  <% end %>
+  <td class='mark-as-read'><button>Mark as Read</button></td>
   <td><%= link_to 'Edit', edit_link_path(link) %></td>
 </tr>
