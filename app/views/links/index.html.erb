@@ -21,7 +21,7 @@
           <td><%= link_to 'Edit', edit_link_path(link) %></td>
         </tr>
       <% else %>
-        <tr class='link' id='<%= link.id %>'>
+        <tr class='link not-read' id='<%= link.id %>'>
           <td><%= link.title %></td>
           <td><%= link.url %></td>
           <td class='read-status'><%= link.read %></td>
