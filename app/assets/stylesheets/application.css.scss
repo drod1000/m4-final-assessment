@@ -17,3 +17,28 @@
 .already-read {
   text-decoration: line-through;
 }
+
+.legend {
+  list-style: none;
+
+  li {
+    float: left;
+    margin-right: 10px;
+  }
+
+  span {
+    border: 1px solid #ccc;
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 2px;
+  }
+
+  .hot-link {
+    background-color: red;
+  }
+
+  .top-link {
+    background-color: yellow;
+  }
+}

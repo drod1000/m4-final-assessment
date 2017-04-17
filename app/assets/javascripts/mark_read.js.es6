@@ -3,6 +3,7 @@ $(document).ready(function() {
 
     var link = $(this).parent('.link')
     var linkId = link.attr('id')
+    var linkUrl = link.children('td:nth-child(2)').text()
 
     $.ajax({
       type: "PATCH",
@@ -11,6 +12,8 @@ $(document).ready(function() {
     }).done(function(response) {
       updateLinkStatus(response)
     })
+
+    HotReads.createReadRecord(linkUrl)
   })
 })
 
