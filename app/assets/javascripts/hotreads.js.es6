@@ -7,4 +7,12 @@ class HotReads {
       type: 'GET'
     })
   }
+
+  static createReadRecord(linkUrl) {
+    $.ajax({
+      type: "POST",
+      url: "https://dr-hot-reads.herokuapp.com/api/v1/links",
+      data: { url: linkUrl }
+    })
+  }
 }

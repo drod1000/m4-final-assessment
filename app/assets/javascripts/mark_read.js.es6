@@ -13,12 +13,7 @@ $(document).ready(function() {
       updateLinkStatus(response)
     })
 
-
-    $.ajax({
-      type: "POST",
-      url: "https://dr-hot-reads.herokuapp.com/api/v1/links",
-      data: { url: linkUrl }
-    })
+    HotReads.createReadRecord(linkUrl)
   })
 })
 
