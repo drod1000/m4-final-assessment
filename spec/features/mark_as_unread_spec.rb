@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "can mark links as unread", :js => :true do
+RSpec.describe "can mark links as unread", js: true do
   scenario "Mark a link as unread" do
     user = create(:user)
     link = create(:link, user: user, read: true)
