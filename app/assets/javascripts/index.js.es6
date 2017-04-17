@@ -5,18 +5,22 @@ $(document).ready(function() {
   })
 })
 
-function checkAgainstHotReads(links) {
-  var hotReads = links
+function checkAgainstHotReads(hotReads) {
+  var hotReads = hotReads
   var links = $('.link')
 
   for(var i = 0; i < links.length; i++ ) {
+      var link = $(links[i])
       var linkUrl = $(links[i]).children('td:nth-child(2)').text()
 
     for(var j = 0; j < hotReads.length; j++) {
       var hotReadUrl = hotReads[j].url
 
-      if(linkUrl == hotReadUrl) {
-        console.log("We got a hot read!!!")
+      if(linkUrl == hotReadUrl && j == 0) {
+        link.css('background-color', 'red');
+      }
+      else if(linkUrl == hotReadUrl) {
+        link.css('background-color', 'yellow')
       }
     }
   }
