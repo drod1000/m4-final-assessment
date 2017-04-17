@@ -11,27 +11,52 @@ RSpec.describe 'can filter by search', js: true do
     visit links_path
   end
 
-  scenario 'filter by title' do
+  context 'filter by title' do
+    it 'can filter by title' do
 
-    within('.link-filter') do
-      fill_in 'link-filter', with: 'First'
+      within('.link-filter') do
+        fill_in 'link-filter', with: 'First'
+      end
+
+      sleep(1)
+
+      expect(page).to have_text('First Title')
+      expect(page).to_not have_text('Second Title')
     end
 
-    sleep(1)
+    it 'is case insensitive' do
+      within('.link-filter') do
+        fill_in 'link-filter', with: 'FIRST'
+      end
 
-    expect(page).to have_text('First Title')
-    expect(page).to_not have_text('Second Title')
+      sleep(1)
+
+      expect(page).to have_text('First Title')
+      expect(page).to_not have_text('Second Title')
+    end
   end
 
-  scenario 'filter by url' do
+  context 'filter by url' do
+    it 'can filter by url' do
+      within('.link-filter') do
+        fill_in 'link-filter', with: 'url2'
+      end
 
-    within('.link-filter') do
-      fill_in 'link-filter', with: 'url2'
+      sleep(1)
+
+      expect(page).to_not have_text('http://url1.com')
+      expect(page).to have_text('http://url2.com')
     end
 
-    sleep(1)
+    it 'is case insensitive' do
+      within('.link-filter') do
+        fill_in 'link-filter', with: 'URL2'
+      end
 
-    expect(page).to_not have_text('http://url1.com')
-    expect(page).to have_text('http://url2.com')
+      sleep(1)
+
+      expect(page).to_not have_text('http://url1.com')
+      expect(page).to have_text('http://url2.com')
+    end
   end
 end
