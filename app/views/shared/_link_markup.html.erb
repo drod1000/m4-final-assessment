@@ -9,5 +9,5 @@
     <td class='mark-as-read'><button>Mark as Read</button>
     </td>
   <% end %>
-  <td><a href="/links/<%= @link.id %>/edit">Edit</a></td>
+  <td><%= link_to 'Edit', edit_link_path(link) %></td>
 </tr>
