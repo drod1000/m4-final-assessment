@@ -28,6 +28,7 @@ class LinksController < ApplicationController
     @user = current_user
     @link = @user.links.find(params[:id])
     if @link.update(link_params)
+      redirect_to links_path
       flash[:success] = "Successfully updated #{@link.title}."
     else
       flash[:danger] = @link.errors.full_messages
