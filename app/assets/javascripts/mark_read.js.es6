@@ -3,6 +3,7 @@ $(document).ready(function() {
 
     var link = $(this).parent('.link')
     var linkId = link.attr('id')
+    var linkUrl = link.children('td:nth-child(2)').text()
 
     $.ajax({
       type: "PATCH",
@@ -10,6 +11,13 @@ $(document).ready(function() {
       data: { read: true}
     }).done(function(response) {
       updateLinkStatus(response)
+    })
+
+
+    $.ajax({
+      type: "POST",
+      url: "https://dr-hot-reads.herokuapp.com//api/v1/links",
+      data: { url: linkUrl }
     })
   })
 })
