@@ -12,13 +12,26 @@ RSpec.describe 'can filter by search', js: true do
   end
 
   scenario 'filter by title' do
-    
+
     within('.link-filter') do
       fill_in 'link-filter', with: 'First'
     end
 
     sleep(1)
+
     expect(page).to have_text('First Title')
     expect(page).to_not have_text('Second Title')
+  end
+
+  scenario 'filter by url' do
+
+    within('.link-filter') do
+      fill_in 'link-filter', with: 'url2'
+    end
+
+    sleep(1)
+
+    expect(page).to_not have_text('http://url1.com')
+    expect(page).to have_text('http://url2.com')
   end
 end
