@@ -1,7 +1,7 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe "can mark links as unread", js: true do
-  scenario "Mark a link as unread" do
+RSpec.describe 'can mark links as unread', js: true do
+  scenario 'Mark a link as unread' do
     user = create(:user)
     link = create(:link, user: user, read: true)
 
@@ -10,15 +10,15 @@ RSpec.describe "can mark links as unread", js: true do
     visit links_path
 
     within('.link .read-status') do
-      expect(page).to have_text("true")
+      expect(page).to have_text('true')
     end
 
-    click_on "Mark as Unread"
+    click_on 'Mark as Unread'
 
     sleep(1)
 
     within('.link .read-status') do
-      expect(page).to have_text("false")
+      expect(page).to have_text('false')
     end
 
   end
