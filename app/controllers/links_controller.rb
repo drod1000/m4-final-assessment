@@ -15,7 +15,7 @@ class LinksController < ApplicationController
       render partial: 'shared/link_markup', locals: {link: @link}
     else
       flash[:danger] = @link.errors.full_messages
-      redirect_to links_path
+      render partial: 'layouts/flash'
     end
   end
 
