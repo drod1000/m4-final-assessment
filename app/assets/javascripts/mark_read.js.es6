@@ -20,5 +20,4 @@ $(document).ready(function() {
 
 function updateLinkStatus(link) {
   $(`.link[id=${link.id}]`).find('.read-status').text(link.read)
-
 }
