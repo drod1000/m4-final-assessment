@@ -19,7 +19,17 @@ RSpec.feature 'Registered user logs in' do
   end
 
   context 'unsuccessful login' do
-    it 'they can not login with invalid credentials' do
+    it 'they can not login with invalid username' do
+      within("form") do
+        fill_in 'email_address', with: 'wrongemail.com'
+        fill_in 'password', with: 'password'
+        click_on 'Login'
+      end
+
+      expect(page).to have_content('That user does not exist!')
+    end
+    
+    it 'they can not login with invalid password' do
       within("form") do
         fill_in 'email_address', with: @user.email_address
         fill_in 'password', with: 'notpassword'
