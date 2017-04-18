@@ -9,6 +9,7 @@ $(document).ready(function() {
       url: "/api/v1/links/" + linkId,
       data: { read: false}
     }).done(function(response) {
+      link.removeClass('already-read')
       updateLinkStatus(response)
     })
   })
