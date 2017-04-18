@@ -10,6 +10,7 @@ $(document).ready(function() {
       url: "/api/v1/links/" + linkId,
       data: { read: true}
     }).done(function(response) {
+      link.addClass('already-read')
       updateLinkStatus(response)
     })
 

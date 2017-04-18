@@ -18,6 +18,8 @@ $(document).ready(function() {
       data: linkData
     }).done(function(linkMarkup) {
       $('table tbody').prepend(linkMarkup)
+      document.getElementById("new_link").reset()
+      $("input[type=submit]").removeAttr("disabled")
     })
   })
 })
